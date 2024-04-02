@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Employee Records
+    </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<h4 style="text-align: center;"> Employee Records</h4>
+<body>
+    <table style="padding-left: 30x;">
+        <tr>
+            <td>
+                <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                    <div>
+                        
+                        <input type="text" name="fullName" id="fullName" placeholder="FullName" style="text-align: left;">
+                    </div>
+                    <div>
+                        <input type="text" name="empCode" id="empCode" placeholder="EMP Code">
+                    </div>
+                    <div>
+                        <input type="text" name="salary" id="salary" placeholder="Salary">
+                    </div>
+                    <div>
+                        <input type="text" name="city" id="city" placeholder="City">
+                    </div>
+                    <!-- Align items to the right -->
+                    <div class="" style="text-align: center;">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </td>
+            <td>
+                <h4 style="text-align: center;">Employee Records Output</h4>
+                <table class="list" id="employeeList">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>EMP Code</th>
+                            <th>Salary</th>
+                            <th>City</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <script src="script.js"></script>
+</body>
+
+</html>
