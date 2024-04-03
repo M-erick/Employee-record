@@ -9,15 +9,19 @@
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/app.css">
     <title>
-        Employee Records
+        Employee Net Salary Calc
     </title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<div style="display: flex;justify-content: space-around; background-color: aquamarine; width: 80%; margin-top: 20px;margin-left: 40px;">
-    <h4 style="text-align: center;"> Employee Records</h4>
-    <div>
-        EM
+<div style="display: flex;justify-content:space-between; background-image: url('image.png'); background-size: cover; width: 80%; margin-top: 20px;margin-left: 40px;">
+  <div style="display: flex;justify-content: flex-start; gap: 25px;">
+    <h4 style=" padding-left: 10px;">Net Calculator</h4>
+    <!-- <h4>logo</h4> -->
+  </div>
+    
+    <div style="  margin:8px; padding: 5px; border: 1px solid black; border-radius: 8px;">
+        Admin
     </div>
 
 </div>
@@ -52,14 +56,16 @@
             <table style="margin-left: 40px;">
                 <tr>
             <td>
-                <h4 style="text-align: center;">Employee Records Output</h4>
-                <table class="list" id="employeeList">
+                <h4 style="text-align: center;background-image: url('image.png'); background-size: cover;">Employee Records Output</h4>
+                <table class="list" id="employeeList" >
                     <thead>
                         <tr>
                             <th>Full Name</th>
                             <th>EMP Code</th>
                             <th>Salary</th>
                             <th>City</th>
+                            <th>NetSalary</th>
+                            
                             <th></th>
                         </tr>
                     </thead>

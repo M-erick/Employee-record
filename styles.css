@@ -39,7 +39,9 @@ input[type=text], input[type=number] {
 
 input[type=submit]{
     width: 30%;
-    background-color: #ddd;
+    /* background-color: #ddd; */
+    background-image: url('image.png'); 
+    background-size: cover;
     color: #000;
     padding: 14px 20px;
     margin: 8px 0;
