@@ -1,38 +1,53 @@
-class Person {
-    constructor(fullName, city) {
-      // Private properties
+
+class Employee  {
+   
+constructor(fullName,city,empCode,salary,profession,type){
+  // private properties
+    this._empCode = empCode;
+    this._salary = salary;
     this._fullName = fullName;
     this._city = city;
+    this._profession = profession;
+    this._type = type;  //either fullTime or Contract
+
+    // declare public variable that will be used generally:
+
+    this.nssfRate = 0.01;
+    this.nhifRate = 0.05;
+    this.housingTax =0.01;
     }
-    get fullName() {
-        return this._fullName;
-      }
-    
-      get city() {
-        return this._city;
-      }
-  
+
+    // get the type of employee
+    get type(){
+      return this._type;
+    }
+    get city(){
+      return this._city;
+    }
+
+    // type of profession can be accountant ,Soft Dev
+    get profession(){
+      return this._profession;
+    }
+
+    get fullName(){
+      return this._fullName;
+    }
+
     getIntroduction() {
       return `Hello, my name is ${this.fullName} and I live in ${this.city}.`;
     }
-  }
-  
-  class Employee extends Person {
-    constructor(fullName, city, empCode, salary=0) {
-      super(fullName, city); // Call parent constructor
-      // Private properties
-    this._empCode = empCode;
-    this._salary = salary;
-    }
+
     get empCode() {
         return this._empCode;
       }
+
+      get salary(){
+        return this._salary;
+      }
   
     calculateNetSalary() {
-      const nhifRate = 0.01;
-      const nssfRate = 0.005;
-      const housingTax = 0.01;
-      return this.salary - (this.salary * nhifRate) - (this.salary * nssfRate) - (this.salary * housingTax);
+      return this.salary - (this.salary * this.nhifRate) - (this.salary * this.nssfRate) - (this.salary * this.housingTax);
     }
   
     // Abstract method - subclasses must implement
@@ -41,9 +56,9 @@ class Person {
     }
   }
   
-  class FullTimeEmployee extends Employee {
-    constructor(fullName, city, empCode, salary, benefits) {
-      super(fullName, city, empCode, salary);
+  class Manager extends Employee {
+    constructor(fullName, city, empCode,salary,benefits,profession,type) {
+      super(fullName, city, empCode, salary,profession,type);
       this.benefits = benefits;
     }
   
@@ -52,6 +67,8 @@ class Person {
         fullName: this.fullName,
         empCode: this.empCode,
         salary: this.salary,
+        profession:this.profession,
+        type:this.type,
         city: this.city,
         netSalary: this.calculateNetSalary(),
         benefits: this.benefits
@@ -59,9 +76,9 @@ class Person {
     }
   }
   
-  class ContractEmployee extends Employee {
-    constructor(fullName, city, empCode, salary, hourlyRate,workedHours) {
-      super(fullName, city, empCode, salary);
+  class Engineer extends Employee {
+    constructor(fullName, city, empCode ,hourlyRate,workedHours, profession,type) {
+      super(fullName, city, empCode,profession,type);
       this.hourlyRate = hourlyRate;
       this.workedHours = workedHours;
     }
@@ -69,9 +86,10 @@ class Person {
     // Polymorphism - different implementation for contract employee
     calculateNetSalary() {
         const grossSalary = this.hourlyRate * this.workedHours;
-        const baseNetSalary = super.calculateNetSalary();
 
-        return grossSalary - baseNetSalary;
+        // const baseNetSalary = super.calculateNetSalary();
+
+        return grossSalary;
 
     }
   
@@ -79,8 +97,11 @@ class Person {
       return {
         fullName: this.fullName,
         empCode: this.empCode,
-        salary: this.salary, 
+        profession:this.profession,
+        hourlyRate: this.hourlyRate, 
+        workedHours:this.workedHours,
         city: this.city,
+        
         
         netSalary: this.calculateNetSalary(),
       };
@@ -88,9 +109,9 @@ class Person {
   }
   
   // Usage example
-  const fullTimeEmployee = new FullTimeEmployee("Erick muriithi", "Nairobi", "FTE001",5000, ["Health Insurance", "Paid Time Off"]);
-  const contractEmployee = new ContractEmployee("Jane ", "Machakos", "CTE002", 30, 75,45);
+  const ManagerPersonnel = new Manager("Erick muriithi", "Nairobi", "FTE001",5000, ["Health Insurance", "Paid Time Off"],"CTM Manager","Fixed");
+  const EngineerPersonnel = new Engineer("Jane ", "Machakos", "CTE002", 30, 75,"Software Engineer","Contract");
   
-  console.log(fullTimeEmployee.getInfoForDisplay());
-  console.log(contractEmployee.getInfoForDisplay());
+  console.log(ManagerPersonnel.getInfoForDisplay());
+  console.log(EngineerPersonnel.getInfoForDisplay());
   
