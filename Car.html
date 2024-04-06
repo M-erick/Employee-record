@@ -7,10 +7,28 @@
 </head>
 <body>
   <h1>Car Showroom</h1>
-  <button id="createSedan">Create Sedan</button>
-  <button id="createTruck">Create Truck</button>
+
+  <div id="about"></div>
+
+  <button id="createSedan">Sedan Details</button>
+ 
+
+<button id="createTruck" >Truck Details</button>
+
+</div>
+  <!-- <button id="createTruck">Truck Details</button> -->
+  <button id="aboutUs" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" style="background-color:#D94A38;">About Us</button>
   <div id="carDetails"></div>
   
   <script src="Car-OOP.js"></script>
+  <script>
+    function mouseOver(info) {
+      info.innerHTML = "About Info";
+    }
+    
+    function mouseOut(info) {
+      info.innerHTML = "About Us";
+    }
+    </script>
 </body>
 </html>
